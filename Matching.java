@@ -17,18 +17,18 @@ public class Matching {
     }
 
     public void Match(Problem p) {
-        for(Hospital h : problem.getHospitals()) {
-            List<Resident> res = new ArrayList<>(problem.getHosPrefMap().get(h));
-            int cap = h.getCapacity();
-            for(Resident r : res) {
-                if(cap > 0) {
+        for(Hospital h : problem.getHospitals()) { // iteram toate spitalele din problema
+            List<Resident> res = new ArrayList<>(problem.getHosPrefMap().get(h)); // obtinem rezidentii din lista de prefeinta a spitalului curent
+            int cap = h.getCapacity(); //capacitatea spitalului curent
+            for(Resident r : res) { // iteram toti rezidentii din lista de preferinta a spitalului curent
+                if(cap > 0) { //mai este loc in spital?
                     if (res.stream().
-                            filter(rr -> problem.getResPrefMap().get(rr).contains(h)).count() != 0) {
+                            filter(rr -> problem.getResPrefMap().get(rr).contains(h)).count() != 0) { // spitalul curent se afla in lista de preferinte a rezidentului?
                         Pair<Resident, Hospital> pair;
                         if (r.getTaken()) {
-                            r.setTaken();
+                            r.setTaken(); //setam ca "luat" acest rezident de catre spitalul curent
                             pair = new Pair<>(r, h);
-                            myMatches.add(pair);
+                            myMatches.add(pair); //adaugam solutia
                             cap--;
                         }
                     }
