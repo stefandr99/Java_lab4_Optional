@@ -6,10 +6,10 @@ import HrStructure.Resident;
 import java.util.*;
 
 public class Problem {
-    List<Resident> residents;
-    List<Hospital> hospitals;
-    Map<Resident, List<Hospital>> resPrefMap;
-    Map<Hospital, List<Resident>> hosPrefMap;
+    List<Resident> residents; //lista de rezidenti
+    List<Hospital> hospitals; //lista de spitale
+    Map<Resident, List<Hospital>> resPrefMap; //map cu preferintele rezidentilor
+    Map<Hospital, List<Resident>> hosPrefMap; //map cu preferintele spitalelor
 
     public Problem() {
         residents = new ArrayList<>();
@@ -39,11 +39,11 @@ public class Problem {
         hospitals.add(h);
     }
 
-    public void fillResMap(Resident r, List<Hospital> h) {
+    public void fillResMap(Resident r, List<Hospital> h) { //metoda ce are scopul de a umple mapa de preferinte pentru rezidentul r
         resPrefMap.put(r, h);
     }
 
-    public void fillHosMap(Hospital h, List<Resident> r) {
+    public void fillHosMap(Hospital h, List<Resident> r) { //metoda ce are scopul de a umple mapa de preferinte pentru spitalul h
         hosPrefMap.put(h, r);
     }
 
